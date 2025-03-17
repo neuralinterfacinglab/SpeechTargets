@@ -46,24 +46,6 @@ def cleanData(data, channels):
             clean_data.append(data[:,i])
     return np.transpose(np.array(clean_data,dtype="float64")), np.array(clean_channels)
 
-    """Apply a common-average re-reference to the data
-    
-    Parameters
-    ----------
-    data: array (samples, channels)
-        EEG time series
-    
-    Returns
-    ----------
-    data: array (samples, channels)
-        CAR re-referenced EEG time series   
-    """
-    data_CAR = np.zeros((data.shape[0], data.shape[1]))
-    average = np.average(data, axis=1)
-    for i in range(data.shape[1]):
-        data_CAR[:,i] = data[:,i] - average
-    return data_CAR
-
 def elecShaftR(data, channels):
     """
     Apply an electrode-shaft re-reference to the data
